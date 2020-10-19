@@ -3,3 +3,6 @@
 
 # Draw.io
 **/**.drawio
+
+# Python pycache
+**/**__pycache__
