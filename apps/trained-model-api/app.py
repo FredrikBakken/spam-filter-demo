@@ -1,43 +1,28 @@
-import tensorflow as tf
+import json
 
-from flask import Flask
+from flask import Flask, request
 
-from keras.preprocessing.text import Tokenizer
-from keras.preprocessing.sequence import pad_sequences
+from services.predict import get_predictions
 
 
-loaded_model = tf.keras.models.load_model(
-    "model/",
-    custom_objects = None,
-    compile = True,
-)
-
-def get_predictions(txts):
-    tokenizer = Tokenizer(num_words = 400, oov_token = "<OOV>")
-    tokenizer.fit_on_texts(txts)
-    
-    txts = tokenizer.texts_to_sequences(txts)
-    txts = pad_sequences(txts, maxlen=250)
-    preds = loaded_model.predict(txts)
-    if(preds[0] > 0.5):
-        print("SPAM MESSAGE")
-    else:
-        print('NOT SPAM')
-
+# Initialize Flask
 app = Flask(__name__)
 
-@app.route("/")
-def home_route():
-    return "Hello world!"
+# Setup incoming route path
+@app.route("/sms", methods = ["GET", "POST"])
+def sms():
+    data = request.json
+    messages = data["messages"]
+    #print(messages) # Debugging
 
-@app.route("/sms/<message>", methods = ["GET", "POST"])
-def sms(message):
-    print(message)
+    predictions = []
+    for msg in messages:
+        message = [msg["message"]]
+        #print(message) # Debugging
 
-    #txts = ["Hi man, I was wondering if we can meet tomorrow."]
-    #txts = ["Free entry in 2 a weekly competition to win FA Cup final tkts 21st May 2005"]
+        prediction, confidence = get_predictions(message)
+        msg["Spam"] = prediction
+        msg["Confidence (Spam)"] = confidence
+        predictions.append(msg)
 
-    get_predictions(message)
-
-    predicted = loaded_model.predict_classes([[0, 23, 65, 34, 12, 89]])
-    return str(predicted)
+    return json.dumps(predictions)

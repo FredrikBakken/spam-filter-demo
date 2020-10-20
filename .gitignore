@@ -6,3 +6,6 @@
 
 # Python pycache
 **/**__pycache__
+
+# DS_Store
+apps/.DS_Store
