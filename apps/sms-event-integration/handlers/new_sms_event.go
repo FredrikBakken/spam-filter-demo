@@ -39,7 +39,7 @@ func ConcurrencyHandler(body []byte) {
 		fmt.Println(smsMessage)
 
 		newMessage := models.GetSmsMessage(smsMessage)
-		kafka.ProduceMessage(producer, newMessage)
+		kafka.ProduceMessage(cfg, producer, newMessage)
 	}
 
 	producer.Close()
