@@ -1,11 +1,8 @@
 package handlers
 
 import (
-	"bytes"
-	"fmt"
-	"io/ioutil"
+	"encoding/json"
 	"net/http"
-	"strings"
 
 	"telenor.com/spam-filter-demo/sms-event-integration/config"
 	"telenor.com/spam-filter-demo/sms-event-integration/models"
@@ -13,34 +10,27 @@ import (
 )
 
 // NewSmsEvent forwards the incoming request by concurrency
-func NewSmsEvent(_ http.ResponseWriter, req *http.Request) {
+func NewSmsEvent(w http.ResponseWriter, req *http.Request) {
 	defer req.Body.Close()
 
-	body, err := ioutil.ReadAll(req.Body)
+	var sms models.SmsMessage
+	err := json.NewDecoder(req.Body).Decode(&sms)
 	if err != nil {
-		panic(err)
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
 	}
 
-	go ConcurrencyHandler(body)
+	go ConcurrencyHandler(sms)
 }
 
 // ConcurrencyHandler handles the process of passing data to Kafka in parallel
-func ConcurrencyHandler(body []byte) {
+func ConcurrencyHandler(sms models.SmsMessage) {
 	var (
 		cfg      = config.New()
-		messages = bytes.Split(body, []byte("\n"))
-
-		// Initialize the Kafka Producer
 		producer = kafka.CreateKafkaProducer(cfg)
 	)
 
-	for _, message := range messages {
-		var smsMessage = strings.Split(string(message), ",")
-		fmt.Println(smsMessage)
-
-		newMessage := models.GetSmsMessage(smsMessage)
-		kafka.ProduceMessage(cfg, producer, newMessage)
-	}
+	kafka.ProduceMessage(cfg, producer, sms)
 
 	producer.Close()
 }
