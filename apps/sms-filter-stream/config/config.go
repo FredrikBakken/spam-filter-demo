@@ -1,6 +1,9 @@
 package config
 
-import "os"
+import (
+	"os"
+	"strings"
+)
 
 // ServerConfig defines the port and event-route
 type ServerConfig struct {
@@ -10,10 +13,10 @@ type ServerConfig struct {
 
 // KafkaConfig defines the Kafka-related variables
 type KafkaConfig struct {
-	Broker     string
-	Schema     string
-	Topic      string
-	SchemaType string
+	Broker      []string
+	TopicNewSMS string
+	TopicHam    string
+	TopicSpam   string
 }
 
 // ProducerConfig defines the configuration of the Kafka producer
@@ -39,13 +42,13 @@ func New() *Config {
 			Port:  getEnv("PORT", "9090"),
 		},
 		Kafka: KafkaConfig{
-			Broker:     getEnv("BOOTSTRAP_SERVERS", "localhost:9092"),
-			Schema:     getEnv("SCHEMA_REGISTRY", "http://localhost:8081"),
-			Topic:      getEnv("KAFKA_TOPIC", "new-sms-json-v1"),
-			SchemaType: getEnv("SCHEMA_TYPE", "JSON"),
+			Broker:      getEnvAsSlice("BOOTSTRAP_SERVERS", []string{"localhost:9092"}),
+			TopicNewSMS: getEnv("TOPIC_NEW_SMS", "new-sms-json-v1"),
+			TopicHam:    getEnv("TOPIC_HAM_SMS", "safe-sms-json-v1"),
+			TopicSpam:   getEnv("TOPIC_SPAM_SMS", "spam-sms-json-v1"),
 		},
 		Producer: ProducerConfig{
-			ClientID:        getEnv("CLIENT_ID", "sms-event-integration"),
+			ClientID:        getEnv("CLIENT_ID", "sms-filter-stream"),
 			Acks:            getEnv("ACKS", "all"),
 			Retries:         getEnv("RETRIES", "10"),
 			CompressionType: getEnv("COMPRESSION_TYPE", "lz4"),
@@ -56,6 +59,15 @@ func New() *Config {
 func getEnv(key string, fallback string) string {
 	if value, ok := os.LookupEnv(key); ok {
 		return value
+	}
+	return fallback
+}
+
+func getEnvAsSlice(key string, fallback []string) []string {
+	valueString := getEnv(key, "")
+	if valueString != "" {
+		slice := strings.Split(valueString, ",")
+		return slice
 	}
 	return fallback
 }

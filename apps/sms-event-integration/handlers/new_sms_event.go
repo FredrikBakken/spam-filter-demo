@@ -13,7 +13,7 @@ import (
 func NewSmsEvent(w http.ResponseWriter, req *http.Request) {
 	defer req.Body.Close()
 
-	var sms models.SmsMessage
+	var sms models.Sms
 	err := json.NewDecoder(req.Body).Decode(&sms)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
@@ -24,7 +24,7 @@ func NewSmsEvent(w http.ResponseWriter, req *http.Request) {
 }
 
 // ConcurrencyHandler handles the process of passing data to Kafka in parallel
-func ConcurrencyHandler(sms models.SmsMessage) {
+func ConcurrencyHandler(sms models.Sms) {
 	var (
 		cfg      = config.New()
 		producer = kafka.CreateKafkaProducer(cfg)

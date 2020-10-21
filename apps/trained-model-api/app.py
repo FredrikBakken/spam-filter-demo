@@ -12,6 +12,20 @@ app = Flask(__name__)
 @app.route("/sms", methods = ["GET", "POST"])
 def sms():
     data = request.json
+    message = [data["message"]]
+    print(message)
+
+    prediction, confidence = get_predictions(message)
+    msg = {
+        "Message": message[0],
+        "Spam": prediction,
+        "Confidence": confidence,
+    }
+
+    return json.dumps(msg)
+
+
+    '''
     messages = data["messages"]
     #print(messages) # Debugging
 
@@ -26,3 +40,4 @@ def sms():
         predictions.append(msg)
 
     return json.dumps(predictions)
+    '''
