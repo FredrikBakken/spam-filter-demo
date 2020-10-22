@@ -12,12 +12,11 @@ app = Flask(__name__)
 @app.route("/sms", methods = ["GET", "POST"])
 def sms():
     data = request.json
-    message = [data["message"]]
-    print(message)
+    message = data["message"]
+    prediction, confidence = get_predictions([message])
 
-    prediction, confidence = get_predictions(message)
     msg = {
-        "Message": message[0],
+        "Message": message,
         "Spam": prediction,
         "Confidence": confidence,
     }
