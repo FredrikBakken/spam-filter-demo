@@ -30,12 +30,15 @@ def bulk_sms():
     messages = data["messages"]
 
     predictions = []
-    for msg in messages:
-        message = [msg["message"]]
+    for message in messages:
+        prediction, confidence = get_predictions([message["message"]])
 
-        prediction, confidence = get_predictions(message)
-        msg["Spam"] = prediction
-        msg["Confidence (Spam)"] = confidence
+        msg = {
+            "Message": message["message"],
+            "Spam": prediction,
+            "Confidence": confidence,
+        }
+
         predictions.append(msg)
 
     return json.dumps(predictions)

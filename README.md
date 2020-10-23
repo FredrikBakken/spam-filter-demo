@@ -105,9 +105,7 @@ POST-Request:
 Returned:
 ```
 {
-    "Message": [
-        "Hi man, I was wondering if we can meet tomorrow."
-    ],
+    "Message": "Hi man, I was wondering if we can meet tomorrow.",
     "Spam": false,
     "Confidence": "0.00%"
 }
@@ -132,14 +130,14 @@ Returned:
 ```
 [
     {
-        "message": "Free entry in 2 a wkly comp to win FA Cup final tkts 21st May 2005",
+        "Message": "Free entry in 2 a wkly comp to win FA Cup final tkts 21st May 2005",
         "Spam": true,
-        "Confidence (Spam)": "56.01%"
+        "Confidence": "56.01%"
     },
     {
-        "message": "Hi man, I was wondering if we can meet tomorrow.",
+        "Message": "Hi man, I was wondering if we can meet tomorrow.",
         "Spam": false,
-        "Confidence (Spam)": "0.00%"
+        "Confidence": "0.00%"
     }
 ]
 ```
