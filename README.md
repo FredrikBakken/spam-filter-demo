@@ -58,15 +58,15 @@ From this data we find that it is structured into five columns, where only the f
 
 Further examination of the data distribution shows us the difference between the number of ham and spam messages in the dataset:
 
-<img src="https://github.com/FredrikBakken/spam-filter-demo/raw/main/docs/assets/ham-vs-spam-count.png"/>
+<img src="https://github.com/FredrikBakken/spam-filter-demo/raw/main/docs/assets/ham-vs-spam-count.png" width="600"/>
 
 It is also possible to investigate the message length of the incoming SMS-messages in the dataset and compare the differences in spam vs. not-spam:
 
-<img src="https://github.com/FredrikBakken/spam-filter-demo/raw/main/docs/assets/ham-vs-spam-length.png"/>
+<img src="https://github.com/FredrikBakken/spam-filter-demo/raw/main/docs/assets/ham-vs-spam-length.png" width="600"/>
 
 Further more - an illustration of the word distribution for ham and spam messages is also performed:
 
-<img src="https://github.com/FredrikBakken/spam-filter-demo/raw/main/docs/assets/ham-vs-spam-most-frequent.png"/>
+<img src="https://github.com/FredrikBakken/spam-filter-demo/raw/main/docs/assets/ham-vs-spam-most-frequent.png" width="600"/>
 
 
 ## Model Service
