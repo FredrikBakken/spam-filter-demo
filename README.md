@@ -85,10 +85,60 @@ Run the following commands within the `/apps/trained-model-api`-directory to dow
 >> flask run
 ```
 
-The application will now be running locally on your machine (http://localhost:5000) and can be used by sending POST-requests to one of the available endpoints (http://localhost:5000/sms or http://localhost:5000/bulk-sms).
+The application will now be running locally on your machine (http://localhost:5000) and can be used by sending a POST-request to one of the endpoints (http://localhost:5000/sms or http://localhost:5000/bulk-sms).
 
 ### Message Example
-...
+Sending POST-requests to this model API can easily be done by using `curl` or Postman.
+
+#### Example 1: Singular SMS-Message
+POST-Request:
+```
+{
+    "message": "Hi man, I was wondering if we can meet tomorrow."
+}
+```
+
+Returned:
+```
+{
+    "Message": [
+        "Hi man, I was wondering if we can meet tomorrow."
+    ],
+    "Spam": false,
+    "Confidence": "0.00%"
+}
+```
+
+#### Example 2: Bulk of SMS-Messages
+POST-Request:
+```
+{
+    "messages": [
+        {
+            "message": "Free entry in 2 a wkly comp to win FA Cup final tkts 21st May 2005"
+        },
+        {
+            "message": "Hi man, I was wondering if we can meet tomorrow."
+        }
+    ]
+}
+```
+
+Returned:
+```
+[
+    {
+        "message": "Free entry in 2 a wkly comp to win FA Cup final tkts 21st May 2005",
+        "Spam": true,
+        "Confidence (Spam)": "56.01%"
+    },
+    {
+        "message": "Hi man, I was wondering if we can meet tomorrow.",
+        "Spam": false,
+        "Confidence (Spam)": "0.00%"
+    }
+]
+```
 
 ## Kafka Producer
 ...
