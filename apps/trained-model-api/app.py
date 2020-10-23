@@ -24,7 +24,7 @@ def sms():
     return json.dumps(msg)
 
 # Setup incoming route for bulk of sms messages
-@app.route("bulk-sms", methods = ["GET", "POST"])
+@app.route("/bulk-sms", methods = ["GET", "POST"])
 def bulk_sms():
     data = request.json
     messages = data["messages"]

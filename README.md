@@ -70,11 +70,24 @@ Further more - an illustration of the word distribution for ham and spam message
 <img src="https://github.com/FredrikBakken/spam-filter-demo/raw/main/docs/assets/ham-vs-spam-most-frequent.png" width="600"/>
 
 ### Define the Model Architecture
-For building the deep learning (DL) model the [Keras](https://keras.io/) API is used. 
+For building the deep learning (DL) model the [Keras](https://keras.io/) API is used. A deep neural network (DNN) is an artificial neural network (ANN) with multiple hidden layers between the input layer and the output layer. These layers are fully connected and includes a weighted parameter which is adjusted during the training phase of the model. Once a deep learning model is trained it's architecture and trained weights can used to make predictions on new messages. Our deep learning model architecture is illustrated below:
 
-<img src="https://github.com/FredrikBakken/spam-filter-demo/raw/main/docs/assets/model-plot.png" width="600"/>
+<img src="https://github.com/FredrikBakken/spam-filter-demo/raw/main/docs/assets/model_plot.png" width="600"/>
 
 ## Model Service
+The model service application is designed to make our prediction model production ready by loading it into a REST-API and make predictions on incoming SMS-messages.
+
+### Launch the Application
+Run the following commands within the `/apps/trained-model-api`-directory to download the dependencies and launch the application:
+
+```
+>> python3 -m pip install -r requirements.txt
+>> flask run
+```
+
+The application will now be running locally on your machine (http://localhost:5000) and can be used by sending POST-requests to one of the available endpoints (http://localhost:5000/sms or http://localhost:5000/bulk-sms).
+
+### Message Example
 ...
 
 ## Kafka Producer
