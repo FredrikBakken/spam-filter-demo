@@ -14,3 +14,10 @@ The following set of requirements has to be fulfilled in order to run the exampl
 - [Jupyter Notebook](https://jupyter.org/)
 - [Golang](https://golang.org/)
 - [Postman](https://www.postman.com/)
+
+# Project Overview
+...
+
+## Architecture
+...
+<img src="https://github.com/FredrikBakken/spam-filter-demo/raw/main/docs/assets/architecture.png"/>
