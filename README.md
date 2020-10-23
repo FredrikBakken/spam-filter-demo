@@ -7,10 +7,10 @@ This is a simple demonstration project to showcase some of the interesting techn
 The purpose of this demonstration project is to illustrate how deep learning can be used to filter incoming SMS messages as either `spam`- or `ham`-messages. It uses an open-source dataset from [Kaggle](https://www.kaggle.com/) - [SMS Spam Collection Dataset](https://www.kaggle.com/uciml/sms-spam-collection-dataset).
 
 ## Requirements
-The following set of requirements has to be fulfilled in order to run the example project.
-- Docker
-- docker-compose
-- Python
-- jupyter-notebook
-- Golang
-- Postman
+The following set of requirements has to be fulfilled in order to run the example project:
+- [Docker](https://www.docker.com/)
+- [docker-compose](https://docs.docker.com/compose/install/)
+- [Python v3.8.6+](https://www.python.org/)
+- [Jupyter Notebook](https://jupyter.org/)
+- [Golang](https://golang.org/)
+- [Postman](https://www.postman.com/)
