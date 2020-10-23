@@ -14,6 +14,7 @@ The following set of requirements has to be fulfilled in order to run the exampl
 - [Jupyter Notebook](https://jupyter.org/)
 - [Golang v1.15.2+](https://golang.org/)
 - [Postman](https://www.postman.com/)
+- [Graphviz](https://graphviz.org/download/) (Only required if you want to make the model image)
 
 # Project Overview
 In this project we will take a closer look at the process of developing a data streaming service application for filtering SMS messages as either spam or ham messages. [Apache Kafka](https://kafka.apache.org/) will be used as the dedicated streaming platform and [Keras](https://keras.io/) is used as the deep learning API for developing the prediction model.
@@ -68,6 +69,10 @@ Further more - an illustration of the word distribution for ham and spam message
 
 <img src="https://github.com/FredrikBakken/spam-filter-demo/raw/main/docs/assets/ham-vs-spam-most-frequent.png" width="600"/>
 
+### Define the Model Architecture
+For building the deep learning (DL) model the [Keras](https://keras.io/) API is used. 
+
+<img src="https://github.com/FredrikBakken/spam-filter-demo/raw/main/docs/assets/model-plot.png" width="600"/>
 
 ## Model Service
 ...
