@@ -28,6 +28,10 @@ The project consists of the following four modules:
 ## Architecture
 <img src="https://github.com/FredrikBakken/spam-filter-demo/raw/main/docs/assets/architecture.png"/>
 
+- **Green boxes:** Kafka applications developed in Golang.
+- **Blue boxes:** Kafka topics.
+- **Orange box:** External prediction service API.
+
 # Applications
 
 ## DL Analytics
