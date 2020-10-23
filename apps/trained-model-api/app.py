@@ -23,15 +23,15 @@ def sms():
 
     return json.dumps(msg)
 
-
-    '''
+# Setup incoming route for bulk of sms messages
+@app.route("bulk-sms", methods = ["GET", "POST"])
+def bulk_sms():
+    data = request.json
     messages = data["messages"]
-    #print(messages) # Debugging
 
     predictions = []
     for msg in messages:
         message = [msg["message"]]
-        #print(message) # Debugging
 
         prediction, confidence = get_predictions(message)
         msg["Spam"] = prediction
@@ -39,4 +39,3 @@ def sms():
         predictions.append(msg)
 
     return json.dumps(predictions)
-    '''
