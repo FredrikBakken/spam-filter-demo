@@ -41,4 +41,26 @@ Run the following command within the `/analytics`-directory to access the notebo
 
 A new page should now open in your browser on http://localhost:8888. Go to the `/notebooks` directory and open the `Deep Learning - Spam Message Classification.ipynb` notebook.
 
+### Exploratory Data Analysis
+When performing data analysis it is important to inspect the type of data that one is working with, from our dataset we e.g. find the following:
+
+```
+v1,v2,,,
+ham,"Go until jurong point, crazy.. Available only in bugis n great world la e buffet... Cine there got amore wat...",,,
+ham,Ok lar... Joking wif u oni...,,,
+spam,Free entry in 2 a wkly comp to win FA Cup final tkts 21st May 2005. Text FA to 87121 to receive entry question(std txt rate)T&C's apply 08452810075over18's,,,
+ham,U dun say so early hor... U c already then say...,,,
+```
+
+From this data we find that it is structured into five columns, where only the first two columns includes information that is interesting for us.
+
+
+
+## Model Service
+...
+
+## Kafka Producer
+...
+
+## Kafka Filter Stream
 ...
