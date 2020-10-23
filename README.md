@@ -1,5 +1,5 @@
 # Spam Filter Demo
-This is a simple demonstration project to showcase some of the interesting technologies and projects you get to work on as a developer at [Telenor](https://www.telenor.no/privat/).
+This is a simple demonstration project to showcase some of the interesting technologies and projects you might get to work on as a developer at [Telenor](https://www.telenor.no/privat/).
 
 <img src="https://github.com/FredrikBakken/spam-filter-demo/raw/main/docs/assets/telenor-logo.png" width="250"/>
 
@@ -25,5 +25,20 @@ The project consists of the following four modules:
 4. **Kafka Filter Stream:** Develop the streaming application for filtering incoming SMS-messages.
 
 ## Architecture
-...
 <img src="https://github.com/FredrikBakken/spam-filter-demo/raw/main/docs/assets/architecture.png"/>
+
+# Applications
+
+## DL Analytics
+We start by examining the deep learning module as it will function as a service for the streaming application to filter the incoming SMS-messages.
+
+### Launch the Application
+Run the following command within the `/analytics`-directory to access the notebook:
+
+```
+>> jupyter notebook
+```
+
+A new page should now open in your browser on http://localhost:8888. Go to the `/notebooks` directory and open the `Deep Learning - Spam Message Classification.ipynb` notebook.
+
+...
