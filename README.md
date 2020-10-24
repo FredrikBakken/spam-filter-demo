@@ -35,6 +35,7 @@ The project consists of the following five modules:
 - **Orange box:** External prediction service API.
 
 # Applications
+The applications in this project requires that the `cp-all-in-one` docker containers are running. These can be launched by the command `docker-compose up -d`.
 
 ## DL Analytics
 We start by examining the deep learning module as it will function as a service for the streaming application to filter the incoming SMS-messages.
