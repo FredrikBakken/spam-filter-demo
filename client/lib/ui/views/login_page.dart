@@ -28,6 +28,7 @@ class _LoginFormState extends State<LoginForm> {
               TextFormField(
                 controller: _username,
                 decoration: InputDecoration(hintText: "Enter your username..."),
+                textCapitalization: TextCapitalization.sentences,
                 validator: (value) {
                   if (value.isEmpty) {
                     return 'Please enter a valid username';

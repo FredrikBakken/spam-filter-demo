@@ -39,12 +39,14 @@ func CallbackFilter(cfg *config.Config) func(goka.Context, interface{}) {
 		}
 
 		// Send to Firestore
-		enrichedMsg := make(map[string]string)
-		enrichedMsg["timestamp"] = messageEnriched.Timestamp
-		enrichedMsg["username"] = messageEnriched.Sender
-		enrichedMsg["message"] = messageEnriched.Message
-		enrichedMsg["ham-or-spam"] = strconv.FormatBool(messageEnriched.HamOrSpam)
-		enrichedMsg["accuracy"] = messageEnriched.Accuracy
-		firestore.UpdateMessages(ctx.Key(), enrichedMsg)
+		if ctx.Key() != "" {
+			enrichedMsg := make(map[string]string)
+			enrichedMsg["timestamp"] = messageEnriched.Timestamp
+			enrichedMsg["username"] = messageEnriched.Sender
+			enrichedMsg["message"] = messageEnriched.Message
+			enrichedMsg["ham-or-spam"] = strconv.FormatBool(messageEnriched.HamOrSpam)
+			enrichedMsg["accuracy"] = messageEnriched.Accuracy
+			firestore.UpdateMessages(ctx.Key(), enrichedMsg)
+		}
 	}
 }

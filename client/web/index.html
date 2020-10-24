@@ -35,12 +35,19 @@
 
   <!-- TODO: Add SDKs for Firebase products that you want to use
       https://firebase.google.com/docs/web/setup#available-libraries -->
-
-  <script src="./firebase-config.js"></script>
   
-  <script type="module">
+  <script> //  type="module">
     // Initialize Firebase
-    import { firebaseConfig } from './firebase-config.js';
+    var firebaseConfig = {
+      apiKey: "AIzaSyA8e14yvpV4KC5zkHZhD_ArQLZe8MyR6ps",
+      authDomain: "spam-filter-demo.firebaseapp.com",
+      databaseURL: "https://spam-filter-demo.firebaseio.com",
+      projectId: "spam-filter-demo",
+      storageBucket: "spam-filter-demo.appspot.com",
+      messagingSenderId: "687795939997",
+      appId: "1:687795939997:web:c8312d996da93bc9d74274"
+    };
+
     firebase.initializeApp(firebaseConfig);
   </script>
 

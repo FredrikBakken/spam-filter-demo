@@ -78,12 +78,36 @@ class _MessagingPageState extends State<MessagingPage> {
                                     ),
                                   ),
                         SizedBox(width: 12.0),
-                        Text(
-                          snapshot.data.documents[index]['username'] + ": ",
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.8,
+                          child: Row(
+                            children: [
+                              Text(
+                                snapshot.data.documents[index]['username'] +
+                                    ": ",
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(width: 8.0),
+                              Expanded(
+                                  child: snapshot.data.documents[index]
+                                              ['ham-or-spam'] ==
+                                          "true"
+                                      ? Text(
+                                          "(This is a spam message) " +
+                                              snapshot.data
+                                                  .documents[index]['message']
+                                                  .toString(),
+                                          textAlign: TextAlign.left,
+                                        )
+                                      : Text(
+                                          snapshot
+                                              .data.documents[index]['message']
+                                              .toString(),
+                                          textAlign: TextAlign.left,
+                                        )),
+                            ],
+                          ),
                         ),
-                        Text(snapshot.data.documents[index]['message']
-                            .toString()),
                       ],
                     ),
                   ),
@@ -108,7 +132,7 @@ class _MessagingPageState extends State<MessagingPage> {
               child: Row(
                 children: <Widget>[
                   Container(
-                    width: (MediaQuery.of(context).size.width) * 0.75,
+                    width: (MediaQuery.of(context).size.width - 80),
                     height: 40,
                     decoration: BoxDecoration(
                         color: Color(0xFFe9eaec),
