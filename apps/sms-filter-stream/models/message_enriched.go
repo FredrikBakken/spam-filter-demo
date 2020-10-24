@@ -1,7 +1,7 @@
 package models
 
-// SmsEnriched initializes the enriched SMS message object
-type SmsEnriched struct {
+// MessageEnriched initializes the enriched message object
+type MessageEnriched struct {
 	Timestamp string
 	Sender    string
 	Receiver  string

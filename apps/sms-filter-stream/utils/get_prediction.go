@@ -9,10 +9,10 @@ import (
 )
 
 // GetPrediction ...
-func GetPrediction(sms models.Sms) models.SmsEnriched {
+func GetPrediction(message models.Message) models.MessageEnriched {
 	url := "http://localhost:5000/sms"
 
-	jsonStr := []byte(`{"message": "` + sms.Message + `"}`)
+	jsonStr := []byte(`{"message": "` + message.Message + `"}`)
 	req, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonStr))
 	req.Header.Set("X-Custom-Header", "myvalue")
 	req.Header.Set("Content-Type", "application/json")
@@ -27,14 +27,14 @@ func GetPrediction(sms models.Sms) models.SmsEnriched {
 	var prediction models.Prediction
 	json.NewDecoder(resp.Body).Decode(&prediction)
 
-	var smsEnriched = models.SmsEnriched{
-		Timestamp: sms.Timestamp,
-		Sender:    sms.Sender,
-		Receiver:  sms.Receiver,
-		Message:   sms.Message,
+	var messageEnriched = models.MessageEnriched{
+		Timestamp: message.Timestamp,
+		Sender:    message.Sender,
+		Receiver:  message.Receiver,
+		Message:   message.Message,
 		HamOrSpam: prediction.Spam,
 		Accuracy:  prediction.Confidence,
 	}
 
-	return smsEnriched
+	return messageEnriched
 }
