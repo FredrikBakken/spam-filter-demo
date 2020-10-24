@@ -24,7 +24,7 @@ def get_predictions(txts):
     preds = loaded_model.predict(txts)
     confidence = f"{float(np.array(preds, dtype=np.float32)[0]) * 100:.2f}%"
 
-    if(preds[0] > 0.5):
+    if(preds[0] > 0.15):
         print("SPAM MESSAGE")
         return True, confidence
     else:

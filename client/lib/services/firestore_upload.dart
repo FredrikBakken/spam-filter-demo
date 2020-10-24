@@ -5,5 +5,6 @@ void createRecord(String username, String message) async {
     'message': message,
     'username': username,
     'timestamp': DateTime.now().millisecondsSinceEpoch.toString(),
+    'ham-or-spam': "",
   });
 }
