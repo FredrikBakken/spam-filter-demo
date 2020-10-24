@@ -9,7 +9,6 @@ void main() async {
 }
 
 class ClientDemo extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,10 +18,7 @@ class ClientDemo extends StatelessWidget {
       ),
       initialRoute: '/login',
       routes: {
-        // When navigating to the "/" route, build the FirstScreen widget.
         '/login': (context) => LoginForm(),
-        // When navigating to the "/second" route, build the SecondScreen widget.
-        // '/messaging': (context) => MessagingPage(),
       },
     );
   }
