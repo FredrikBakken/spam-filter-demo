@@ -15,15 +15,17 @@ The following set of requirements has to be fulfilled in order to run the exampl
 - [Golang v1.15.2+](https://golang.org/)
 - [Postman](https://www.postman.com/)
 - [Graphviz](https://graphviz.org/download/) (Only required if you want to make the model image)
+- [Flutter v1.23.0-18.1.pre](https://flutter.dev/docs/get-started/install) (Only required for the client application)
 
 # Project Overview
-In this project we will take a closer look at the process of developing a data streaming service application for filtering SMS messages as either spam or ham messages. [Apache Kafka](https://kafka.apache.org/) will be used as the dedicated streaming platform and [Keras](https://keras.io/) is used as the deep learning API for developing the prediction model.
+In this project we will take a closer look at the process of developing a data streaming service application for filtering SMS messages as either spam or ham messages. [Apache Kafka](https://kafka.apache.org/) will be used as the dedicated streaming platform and [Keras](https://keras.io/) is used as the deep learning API for developing the prediction model. A chat messaging client is also developed and deployed for interactive testing.
 
-The project consists of the following four modules:
+The project consists of the following five modules:
 1. **DL Analytics:** Design and develop a deep learning prediction model.
 2. **Model Service:** Build the deep learning prediction API.
 3. **Kafka Producer:** Publish incoming SMS-messages to a Kafka topic.
 4. **Kafka Filter Stream:** Develop the streaming application for filtering incoming SMS-messages.
+5. **Messaging Client:** Develop and publish the messaging chat application for sending example messages.
 
 ## Architecture
 <img src="https://github.com/FredrikBakken/spam-filter-demo/raw/main/docs/assets/architecture.png"/>
@@ -146,4 +148,7 @@ Returned:
 ...
 
 ## Kafka Filter Stream
+...
+
+## Messaging Client
 ...
