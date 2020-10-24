@@ -1,7 +1,7 @@
 package models
 
-// Sms initializes the SMS message object
-type Sms struct {
+// Message initializes the message object
+type Message struct {
 	Timestamp string
 	Sender    string
 	Receiver  string

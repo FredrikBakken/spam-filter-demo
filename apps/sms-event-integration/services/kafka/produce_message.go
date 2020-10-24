@@ -11,15 +11,15 @@ import (
 )
 
 // ProduceMessage sends the SMS message to a Kafka topic
-func ProduceMessage(cfg *config.Config, producer *kafka.Producer, sms models.Sms) {
+func ProduceMessage(cfg *config.Config, producer *kafka.Producer, message models.Message, key string) {
 	deliveryChan := make(chan kafka.Event)
 
-	value, _ := json.Marshal(&sms)
+	value, _ := json.Marshal(&message)
 	err := producer.Produce(&kafka.Message{
 		TopicPartition: kafka.TopicPartition{
 			Topic:     &cfg.Kafka.Topic,
 			Partition: kafka.PartitionAny},
-		Key:   []byte(sms.Sender),
+		Key:   []byte(key),
 		Value: []byte(value),
 	}, deliveryChan)
 

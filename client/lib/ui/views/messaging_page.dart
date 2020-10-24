@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:client/services/firestore_upload.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -43,8 +45,16 @@ class _MessagingPageState extends State<MessagingPage> {
                 return ListView.builder(
                   padding: EdgeInsets.all(10.0),
                   itemBuilder: (context, index) => Container(
-                    child: Text(
-                        snapshot.data.documents[index]['message'].toString()),
+                    child: Row(
+                      children: [
+                        Text(
+                          snapshot.data.documents[index]['username'] + ": ",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        Text(snapshot.data.documents[index]['message']
+                            .toString()),
+                      ],
+                    ),
                   ),
                   // buildItem(context, snapshot.data.documents[index]),
                   itemCount: snapshot.data.documents.length,
