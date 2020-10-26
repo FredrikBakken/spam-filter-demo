@@ -2,7 +2,7 @@ package models
 
 // Message initializes the message object
 type Message struct {
-	Timestamp string
+	Timestamp int64
 	Sender    string
 	Receiver  string
 	Message   string

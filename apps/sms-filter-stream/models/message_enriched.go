@@ -2,7 +2,7 @@ package models
 
 // MessageEnriched initializes the enriched message object
 type MessageEnriched struct {
-	Timestamp string
+	Timestamp int64
 	Sender    string
 	Receiver  string
 	Message   string

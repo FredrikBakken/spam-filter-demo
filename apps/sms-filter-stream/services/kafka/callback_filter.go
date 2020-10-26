@@ -40,7 +40,7 @@ func CallbackFilter(cfg *config.Config) func(goka.Context, interface{}) {
 
 		// Send to Firestore
 		if ctx.Key() != "" {
-			enrichedMsg := make(map[string]string)
+			enrichedMsg := make(map[string]interface{})
 			enrichedMsg["timestamp"] = messageEnriched.Timestamp
 			enrichedMsg["username"] = messageEnriched.Sender
 			enrichedMsg["message"] = messageEnriched.Message

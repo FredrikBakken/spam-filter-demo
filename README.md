@@ -92,7 +92,9 @@ Run the following commands within the `/apps/trained-model-api`-directory to dow
 >> flask run
 ```
 
-The application will now be running locally on your machine (http://localhost:5000) and can be used by sending a POST-request to one of the endpoints (http://localhost:5000/sms or http://localhost:5000/bulk-sms).
+The application will now be running locally on your machine (http://localhost:5000) and can be used by sending a POST-request to one of the following endpoints:
+ - http://localhost:5000/sms
+ - http://localhost:5000/bulk-sms
 
 ### Message Example
 Sending POST-requests to this model API can easily be done by using `curl` or Postman.

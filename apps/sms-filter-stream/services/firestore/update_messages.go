@@ -9,7 +9,7 @@ import (
 )
 
 // UpdateMessages ...
-func UpdateMessages(docID string, message map[string]string) {
+func UpdateMessages(docID string, message map[string]interface{}) {
 	// Setup Firestore connection
 	opt := option.WithCredentialsFile("config/serviceAccountKey.json")
 	app, err := firebase.NewApp(context.Background(), nil, opt)

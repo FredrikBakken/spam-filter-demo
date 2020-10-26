@@ -4,7 +4,7 @@ void createRecord(String username, String message) async {
   await FirebaseFirestore.instance.collection("messages").add({
     'message': message,
     'username': username,
-    'timestamp': DateTime.now().millisecondsSinceEpoch.toString(),
+    'timestamp': DateTime.now().microsecondsSinceEpoch,
     'ham-or-spam': "",
   });
 }

@@ -47,7 +47,7 @@ func GetMessages() []models.Message {
 			log.Println(doc.Data())
 
 			var newMessage = models.Message{
-				Timestamp: doc.Data()["timestamp"].(string),
+				Timestamp: doc.Data()["timestamp"].(int64),
 				Sender:    doc.Data()["username"].(string),
 				Receiver:  doc.Ref.ID,
 				Message:   doc.Data()["message"].(string),
