@@ -153,7 +153,7 @@ The incoming messages into the application will first arrive at the Kafka Produc
 The application also pulls new messages from the Firebase - Cloud Firestore and pushes these messages to the `new-sms-json-v1` topic, which is used as a client-based example application.
 
 ### Launch the Application
-Run the following commands within the `/apps/sms-event-integration`-directory to launch the application:
+Run the following command within the `/apps/sms-event-integration`-directory to launch the application:
 
 ```
 >> go run app.go
@@ -167,11 +167,23 @@ The filter stream application is a streaming application that listens for new me
 In the client demonstration case, the results are also pushed to update the corresponding messages in Firebase - Cloud Firestore.
 
 ### Launch the Application
-Run the following commands within the `/apps/sms-filter-stream`-directory to launch the application:
+Run the following command within the `/apps/sms-filter-stream`-directory to launch the application:
 
 ```
 >> go run app.go
 ```
 
 ## Messaging Client
-...
+The messaging client is a simple Flutter web chatroom application where clients can send messages. These messages are stored into the Firebase - Cloud Firestore and continously streamed by the web application. Any updates to the messages, such as categorization as spam or not-spam, will be accessible to the users using the chatroom.
+
+### Launch the Application
+To run this application on your own machine, it requires that you have created a new Firebase project and updated the `firebaseConfig` variable found within the `/client/web/index.html` file with your Firebase project config. After this is done, the client application can be launched by running the following commands within the `/client`-directory:
+
+```
+>> flutter run -d chrome
+```
+
+Important to note is that if you want to run the entire project locally, it also requires you to add the `serviceAccountKey.json` file into the `/config` directory of both the `sms-event-integration`- and the `sms-filter-stream` application.
+
+# Have any Questions or in Need of Support?
+Do you want a demonstration of the project or have any questions/issues, please feel free to create a `New Issue` on the [Issues](https://github.com/FredrikBakken/spam-filter-demo/issues) page and I will get back to you as soon as possible.
