@@ -185,5 +185,5 @@ To run this application on your own machine, it requires that you have created a
 
 Important to note is that if you want to run the entire project locally, it also requires you to add the `serviceAccountKey.json` file into the `/config` directory of both the `sms-event-integration`- and the `sms-filter-stream` application.
 
-# Have any Questions or in Need of Support?
+# Any Questions?
 Do you want a demonstration of the project or have any questions/issues, please feel free to create a `New Issue` on the [Issues](https://github.com/FredrikBakken/spam-filter-demo/issues) page and I will get back to you as soon as possible.
