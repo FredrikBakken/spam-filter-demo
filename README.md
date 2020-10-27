@@ -153,14 +153,25 @@ The incoming messages into the application will first arrive at the Kafka Produc
 The application also pulls new messages from the Firebase - Cloud Firestore and pushes these messages to the `new-sms-json-v1` topic, which is used as a client-based example application.
 
 ### Launch the Application
-Run the following commands within the `/apps/sms-event-integration`-directory launch the application:
+Run the following commands within the `/apps/sms-event-integration`-directory to launch the application:
 
 ```
 >> go run app.go
 ```
 
 ## Kafka Filter Stream
-...
+The filter stream application is a streaming application that listens for new messages to arrive into the `new-sms-json-v1` topic, structures the messages into accepted JSON-format for the model API, sends POST-requests to the model API, and then pushes the messages to one of the following Kafka topics based on the predicted result:
+- `safe-sms-json-v1`
+- `spam-sms-json-v1`
+
+In the client demonstration case, the results are also pushed to update the corresponding messages in Firebase - Cloud Firestore.
+
+### Launch the Application
+Run the following commands within the `/apps/sms-filter-stream`-directory to launch the application:
+
+```
+>> go run app.go
+```
 
 ## Messaging Client
 ...
