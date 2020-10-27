@@ -148,7 +148,16 @@ Returned:
 ```
 
 ## Kafka Producer
-...
+The incoming messages into the application will first arrive at the Kafka Producer application, called `sms-event-integration`. This application works as a REST-API with an endpoint for serving incoming messages. These messages are then structured into objects and published to a Kafka topic named `new-sms-json-v1`.
+
+The application also pulls new messages from the Firebase - Cloud Firestore and pushes these messages to the `new-sms-json-v1` topic, which is used as a client-based example application.
+
+### Launch the Application
+Run the following commands within the `/apps/sms-event-integration`-directory launch the application:
+
+```
+>> go run app.go
+```
 
 ## Kafka Filter Stream
 ...
