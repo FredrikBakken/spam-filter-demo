@@ -8,7 +8,8 @@
 **/**__pycache__
 
 # DS_Store
-apps/.DS_Store
+**/.DS_Store
+.DS_Store
 
 # Firebase config
 **/**/serviceAccountKey.json
